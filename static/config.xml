@@ -1,0 +1,9 @@
+<data>
+    <items>
+        <item name="database">LoopDemo</item>
+        <item name="user">postgres</item>
+        <item name="password">admin</item>
+        <item name="host">localhost</item>
+        <item name="port">5432</item>
+    </items>
+</data>
