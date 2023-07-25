@@ -77,6 +77,7 @@ pip install -r requirements.txt
        ```
 
 4. In the env folder, rename the config_fill.xml file to config.xml and fill in the DB config details.
+5. For convenience, to push the code on GitHub the CSV files (in csv_files/) are empty. Append the rows to these files as needed.
 
 ## Run the application
 
