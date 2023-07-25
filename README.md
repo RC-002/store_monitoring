@@ -20,10 +20,12 @@
 ## High-Level Design:
 
 1. Front-end, back-end and file-store communication
-    ![image](https://github.com/RC-002/store_monitoring/assets/83537305/6c8d8ef9-aa83-484d-886e-1d2488674d38)
+    ![image](https://github.com/RC-002/store_monitoring/assets/83537305/a0588aa1-2e68-4667-9b0c-b60d9e45b034)
+
 
 2. Back-end and DB communication
-    ![image](https://github.com/RC-002/store_monitoring/assets/83537305/9b628c57-3191-4ad4-8fa6-25c74dce8e60)
+    ![image](https://github.com/RC-002/store_monitoring/assets/83537305/8642de4b-0632-48ba-9063-9a3a114e3f61)
+
 
 ## Set-up
 
