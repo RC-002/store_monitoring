@@ -1,147 +1,146 @@
 <html>  
 <head>  
-	<style>
-		.overlay{
-			display: none;
-			position: fixed;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			z-index: 999;
-			background: rgba(255,255,255,0.8) url("static/loader.gif") center no-repeat;
+	<meta charset="UTF-8">
+  	<title>LOOP Demo</title>
+	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../static/css/styles.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script type = "text/javascript">  
+	function loadMenuHours() {   
+		// Creating Our XMLHttpRequest object
+		$("body").addClass("loading"); 
+		let xhr = new XMLHttpRequest();
+	
+		// Making our connection 
+		let url = '/upload/menuhours';
+		xhr.open("GET", url, true);
+	
+		// function execute after request is successful
+		xhr.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				console.log(this.responseText);
+				alert(this.responseText);
+				$("body").removeClass("loading"); 
+			}
 		}
-		/* Turn off scrollbar when body element has the loading class */
-		body.loading{
-			overflow: hidden;   
+		// Sending our request
+		xhr.send();
+	}
+
+	function loadStoreStatus() {   
+		// Creating Our XMLHttpRequest object
+		$("body").addClass("loading"); 
+		let xhr = new XMLHttpRequest();
+		// Making our connection 
+		let url = '/upload/storestatus';
+		xhr.open("GET", url, true);
+	
+		// function execute after request is successful
+		xhr.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				console.log(this.responseText);
+				alert(this.responseText);
+				$("body").removeClass("loading"); 
+			}
 		}
-		/* Make spinner image visible when body element has the loading class */
-		body.loading .overlay{
-			display: block;
+		// Sending our request
+		xhr.send();
+	}
+
+
+	function loadTimeZone() {   
+		// Creating Our XMLHttpRequest object
+		$("body").addClass("loading"); 
+		let xhr = new XMLHttpRequest();
+		// Making our connection 
+		let url = '/upload/timezone';
+		xhr.open("GET", url, true);
+	
+		// function execute after request is successful
+		xhr.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				console.log(this.responseText);
+				alert(this.responseText);
+				$("body").removeClass("loading"); 
+			}
 		}
-		</style>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type = "text/javascript">  
-function loadMenuHours() {   
-    // Creating Our XMLHttpRequest object
-	$("body").addClass("loading"); 
-    let xhr = new XMLHttpRequest();
- 
-    // Making our connection 
-    let url = '/upload/menuhours';
-    xhr.open("GET", url, true);
- 
-    // function execute after request is successful
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
-			alert(this.responseText);
-			$("body").removeClass("loading"); 
-        }
-    }
-    // Sending our request
-    xhr.send();
-}
-
-function loadStoreStatus() {   
-    // Creating Our XMLHttpRequest object
-	$("body").addClass("loading"); 
-	let xhr = new XMLHttpRequest();
-    // Making our connection 
-    let url = '/upload/storestatus';
-    xhr.open("GET", url, true);
- 
-    // function execute after request is successful
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
-			alert(this.responseText);
-			$("body").removeClass("loading"); 
-        }
-    }
-    // Sending our request
-    xhr.send();
-}
+		// Sending our request
+		xhr.send();
+	}
 
 
-function loadTimeZone() {   
-    // Creating Our XMLHttpRequest object
-	$("body").addClass("loading"); 
-	let xhr = new XMLHttpRequest();
-    // Making our connection 
-    let url = '/upload/timezone';
-    xhr.open("GET", url, true);
- 
-    // function execute after request is successful
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
-			alert(this.responseText);
-			$("body").removeClass("loading"); 
-        }
-    }
-    // Sending our request
-    xhr.send();
-}
+	function processTriggerReport() {   
+		console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
+		var offset = new Date().getTimezoneOffset();
+		console.log(offset);
+		// if offset equals -60 then the time zone offset is UTC+01
+		// Creating Our XMLHttpRequest object
+		$("body").addClass("loading"); 
+		let xhr = new XMLHttpRequest();
+		// Making our connection 
+		let url = '/trigger_report?timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone+'&offset='+offset;
+		xhr.open("GET", url, true);
+	
+		// function execute after request is successful
+		xhr.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				console.log(this.responseText);
+				alert(this.responseText);
+				$("body").removeClass("loading"); 
+			}
+		}
+		// Sending our request
+		xhr.send();	
+	}
 
-
-function processTriggerReport() {   
-	console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
-	var offset = new Date().getTimezoneOffset();
-	console.log(offset);
-	// if offset equals -60 then the time zone offset is UTC+01
-    // Creating Our XMLHttpRequest object
-	$("body").addClass("loading"); 
-	let xhr = new XMLHttpRequest();
-    // Making our connection 
-    let url = '/trigger_report?timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone+'&offset='+offset;
-    xhr.open("GET", url, true);
- 
-    // function execute after request is successful
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
-			alert(this.responseText);
-			$("body").removeClass("loading"); 
-        }
-    }
-    // Sending our request
-    xhr.send();	
-}
-
-</script>  
+	</script>  
 </head>  
 <body>  
-<p><u><span style="font-size:16px"><strong>Welome to Loop Demo</strong></span></u></p>
+	<h1>Store Management</h1>
+	<h3>List of Available Options</h3>
+	
+	<hr>
+	<br>
 
-<p><strong>List of Available Options</strong></p>
+	<div style="width:500px; margin:0 auto;">
+		<table border="0" cellpadding="4" cellspacing="4" style="width: 500px;">
+			<tbody>
+				<tr>
+					<td>Load Menu Hours from CSV to DB</td>
+					<td style="width: 139px;">
+						<button onclick="loadMenuHours()" type="button" class="btn btn-primary btn-block btn-large">Load Menu Hours</button>
+					</td>
+				</tr>
+				<tr>
+					<td>Load Store Status from CSV to DB</td>
+					<td style="width: 139px;">
+						<button onclick="loadStoreStatus()" type="button" class="btn btn-primary btn-block btn-large">Load Store Status</button>
+					</td>
+				</tr>
+				<tr>
+					<td>Load Time Zone from CSV to DB</td>
+					<td style="width: 139px;">
+						<button onclick="loadTimeZone()" type="button" class="btn btn-primary btn-block btn-large">Load Time Zone</button>
+					</td>
+				</tr>
+				<tr>
+					<td>Trigger Report</td>
+					<td style="width: 139px;">
+						<button onclick="processTriggerReport()" type="button" class="btn btn-primary btn-block btn-large">Trigger Report</button>
+					</td>
+				</tr>
+				<tr>
+					<td>Get Report</td>
+					<td style="width: 150px;"><small>This option to be manually triggered with the api call - http://127.0.0.1:5000/get_report/report_id</small></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
-<table border="0" cellpadding="1" cellspacing="1" style="width: 400.333px;">
-	<tbody>
-		<tr>
-			<td>Load Menu Hours from CSV to DB</td>
-			<td style="width: 139px;"><button onclick="loadMenuHours()" type="button">Load Menu Hours</button></td>
-		</tr>
-		<tr>
-			<td>Load Store Status from CSV to DB</td>
-			<td style="width: 139px;"><button onclick="loadStoreStatus()" type="button">Load Store Status</button></td>
-		</tr>
-		<tr>
-			<td>Load Time Zone from CSV to DB</td>
-			<td style="width: 139px;"><button onclick="loadTimeZone()" type="button">Load Time Zone</button></td>
-		</tr>
-		<tr>
-			<td>Trigger Report</td>
-			<td style="width: 139px;"><button onclick="processTriggerReport()" type="button">Trigger Report</button></td>
-		</tr>
-		<tr>
-			<td>Get Report</td>
-			<td style="width: 139px;">This option to be manually triggered like - http://127.0.0.1:5000/get_report/report_id></td>
-		</tr>
-	</tbody>
-</table>
-
-<p>&nbsp;</p>
-<div class="overlay"></div>
+	<p>&nbsp;</p>
+	<div class="overlay"></div>
 </body>  
 </html>  
